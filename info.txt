@@ -1,0 +1,12 @@
+drizzle orm 
+commands
+schema me changes kroo to yeh run krna 
+
+npx drizzle-kit push
+
+
+local system me run krna ho to
+
+
+npx drizzle-kit studio in terminal
+

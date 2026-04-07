@@ -84,7 +84,7 @@ function Header() {
 
       {/* Navbar  */}
       <NavigationMenu>
-  <NavigationMenuList className='gap-8'>
+  <NavigationMenuList className='gap-8' suppressHydrationWarning>
     <NavigationMenuItem>
       <NavigationMenuTrigger>Courses</NavigationMenuTrigger>
       <NavigationMenuContent>
