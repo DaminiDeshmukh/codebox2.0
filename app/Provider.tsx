@@ -1,3 +1,5 @@
+"use client"; //added by mini
+
 import React from 'react'
 import { ThemeProvider as NextThemesProvider } from "next-themes"
 
