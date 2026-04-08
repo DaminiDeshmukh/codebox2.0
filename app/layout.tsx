@@ -38,21 +38,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
+   //previously <ClerkProvider> was here
+   <ClerkProvider>
     <html
       lang="en"
-      suppressHydrationWarning
-      className="dark">
-      <body className={`${geistSans.variable} ${geistMono.variable} ${GameFont.variable} ${inter.variable} antialiased`}>
+      
+      className="dark"
+      suppressHydrationWarning>
+      
+        <body className={`${geistSans.variable} ${geistMono.variable} ${GameFont.variable} ${inter.variable} antialiased`}>
+         {/* <ClerkProvider> */}
         <Provider  attribute="class"
             defaultTheme="dark"
             enableSystem
             disableTransitionOnChange>
           {children}
         </Provider>
-        
+        {/* </ClerkProvider> */}
         </body>
     </html>
     </ClerkProvider>
+    
   );
 }
