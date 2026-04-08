@@ -1,3 +1,4 @@
+"use client";
 import React from 'react'
 import Image from "next/image";
 
@@ -11,8 +12,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
-
-
+import { UserButton, useUser } from '@clerk/nextjs';
 
 const courses = [
   {
@@ -74,6 +74,7 @@ const courses = [
 
 
 function Header() {
+  const {user}=useUser();
   return (
     <div className='p-4 max-w-7xl flex justify-between items-center w-full'>
         <div className='flex gap-2 items-center'>
@@ -83,11 +84,11 @@ function Header() {
 
       {/* Navbar  */}
       <NavigationMenu>
-  <NavigationMenuList className='gap-8'>
+  <NavigationMenuList className='gap-8' suppressHydrationWarning>
     <NavigationMenuItem>
       <NavigationMenuTrigger>Courses</NavigationMenuTrigger>
       <NavigationMenuContent>
-        <ul className='grid md:grid-cols-2 gap-2 sm:w-[400px] md:w-[500px] lg:w-[600px] '>
+        <ul className='grid md:grid-cols-2 gap-2 sm:w-125 md:w-125 lg:w-150 '>
             {courses.map((course,index) => (
               <div key={index} className='p-2 hover:bg-accent rounded-xl cursor-pointer'>
                   <h2 className='font-medium'>{course.name}</h2>
@@ -99,19 +100,19 @@ function Header() {
     </NavigationMenuItem>
 
     <NavigationMenuItem>
-        <NavigationMenuLink>
+        <NavigationMenuLink asChild>
             <Link href={'/projects'}>Projects</Link>
         </NavigationMenuLink>
     </NavigationMenuItem>
 
     <NavigationMenuItem>
-        <NavigationMenuLink>
+        <NavigationMenuLink asChild>
             <Link href={'/pricing'}>Pricing</Link>
         </NavigationMenuLink>
     </NavigationMenuItem>
 
     <NavigationMenuItem>
-        <NavigationMenuLink>
+        <NavigationMenuLink asChild>
             <Link href={'/contact-us'}>Contact Us</Link>
         </NavigationMenuLink>
     </NavigationMenuItem>
@@ -120,7 +121,17 @@ function Header() {
 </NavigationMenu>
 
       {/* signup button  */}
-      <Button className='font-game text-2xl ' variant={'pixel'}> Signup</Button>
+     {!user? 
+     <Link href={'/sign-in'}>
+     
+     <Button className='font-game text-2xl ' variant={'pixel'}> Signup</Button> 
+      </Link>:
+    
+     <div className='flex gap-2 items-center'>
+      <Button className='font-game text-2xl ' variant={'pixel'}> Dashboard</Button>
+     <UserButton/>
+     </div>
+     } 
     </div>
   )
 }
