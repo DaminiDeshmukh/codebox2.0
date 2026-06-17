@@ -2,7 +2,8 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Contributors
 - Damini Deshmukh
-- Anshul Tripathi https://github.com/anshultripathihit
+- Anshul Tripathi
+https://github.com/anshultripathihit
 
 ## Getting Started
 
